@@ -16,7 +16,7 @@ public class Errorvalidation extends Wrapper {
 		
 		userLoginDetails("Yash@gmail.com", "Welcome@1");
 		String actualError = loginErrorvalidation();
-		Assert.assertEquals(actualError, "Incorrect email or password.");
+		Assert.assertEquals(actualError, "Incorrect email or password");
 		
 	
 	}

@@ -25,16 +25,17 @@ public class Wrapper extends BrowserComponents {
     // LaunchApp method to setup browser and navigate to the website
     public void LaunchApp() throws IOException {
         // Ensure that the WebDriver is initialized properly
-        if (driver == null) {
-            initializeBrowser();  // Call setupBrowser() to initialize WebDriver
-        }
+
+        initializeBrowser();  // Call setupBrowser() to initialize WebDriver
+        
         launchWebSite();  // Navigate to the application URL
     }
 
     // LaunchBrowser method annotated with @BeforeMethod to launch the app before each test
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void LaunchBrowser() throws IOException {
         try {
+        	System.out.println("*******");
             LaunchApp();  // Initialize browser and navigate to URL
         } catch (Exception e) {
             System.out.println("Error launching browser: " + e.getMessage());
@@ -43,8 +44,8 @@ public class Wrapper extends BrowserComponents {
     }
 
     // Teardown method to quit the browser after the test is executed
-    @AfterMethod
-    public void quitBrowser() {
+    @AfterMethod (alwaysRun = true)
+    public void closeWebSite() {
         try {
             tearDown();  // Quit WebDriver safely
         } catch (Exception e) {
@@ -54,7 +55,7 @@ public class Wrapper extends BrowserComponents {
 
     // tearDown method from BrowserComponents to quit the browser
     public void tearDown() throws IOException {
-    	System.out.println("*******");
+    
         quitBrowser();  // Quit the browser session
     }
     

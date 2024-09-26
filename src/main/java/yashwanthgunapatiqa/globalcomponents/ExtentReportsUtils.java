@@ -9,11 +9,16 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 
-public class ExtentReportsUtils extends BrowserComponents {
+public class ExtentReportsUtils  {
 	
+	
+	private WebDriver driver;
+	private BrowserComponents browser;
     // Constructor to initialize the WebDriver
-    public ExtentReportsUtils(WebDriver driver) {
+	
+    public ExtentReportsUtils(WebDriver driver) throws IOException {
         this.driver = driver;  // Use the WebDriver passed from test classes
+        this.browser = new BrowserComponents();
     }
     
 	public static ExtentReports getReportObject() {
@@ -32,13 +37,7 @@ public class ExtentReportsUtils extends BrowserComponents {
 	}
 	
 	public String getScreenShot(String testcaseName) throws IOException {
-		
-	      // Check if the driver is not null
-	    if (driver == null) {
-	        System.err.println("WebDriver instance is null. Cannot capture screenshot.");
-	        return null;  // Return null to handle the failure gracefully
-	    }
-        
+	        
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
 		File destFile = new File(System.getProperty("user.dir")+"//reports//"+testcaseName+".png");

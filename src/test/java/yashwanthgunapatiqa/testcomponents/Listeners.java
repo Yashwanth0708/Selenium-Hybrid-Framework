@@ -11,7 +11,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import yashwanthgunapatiqa.globalcomponents.BrowserComponents;
+import yashwanthgunapatiqa.globalcomponents.*;
 import yashwanthgunapatiqa.globalcomponents.ExtentReportsUtils;
 
 public class Listeners implements ITestListener {
@@ -34,30 +34,41 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        System.out.println("Test failed: " + result.getMethod().getMethodName());
         extentTest.get().fail(result.getThrowable());  // Log the failure in the report
 
         // Get WebDriver instance from the test class
         Object testClass = result.getInstance();
-        WebDriver driver = ((BrowserComponents) testClass).driver;  // Safely retrieve WebDriver
+        WebDriver driver = null;
 
-        // Check if WebDriver is null
+        // Safely retrieve WebDriver, ensuring that testClass is of type Wrapper
+        if (testClass instanceof Wrapper) {
+            System.out.println("Test class is an instance of Wrapper, retrieving WebDriver.");
+            driver = ((Wrapper) testClass).driver;  // Retrieve WebDriver if testClass is a Wrapper
+        } else {
+            System.err.println("Test class is NOT an instance of Wrapper. Cannot retrieve WebDriver.");
+            return;  // Exit if WebDriver cannot be retrieved
+        }
+
         if (driver == null) {
-            System.err.println("WebDriver is null in onTestFailure. Skipping screenshot.");
+            System.err.println("WebDriver is null, cannot take a screenshot.");
             return;
         }
 
         // Capture screenshot
-        ExtentReportsUtils extentReportsUtils = new ExtentReportsUtils(driver);
         try {
+            ExtentReportsUtils extentReportsUtils = new ExtentReportsUtils(driver);
             String filePath = extentReportsUtils.getScreenShot(result.getMethod().getMethodName());
             if (filePath != null) {
                 extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+                System.out.println("Screenshot captured for failed test: " + result.getMethod().getMethodName());
             }
         } catch (IOException e) {
+            System.err.println("Error capturing screenshot: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public void onTestSkipped(ITestResult result) {
         extentTest.get().log(Status.SKIP, "Test case skipped");
