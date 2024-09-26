@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: yashwanthgunapatiqa.tests.SubmitOrder_E2E_TestCase
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 70.56 s -- in yashwanthgunapatiqa.tests.SubmitOrder_E2E_TestCase

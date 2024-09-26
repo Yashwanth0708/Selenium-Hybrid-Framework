@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <groups>
+        <run>
+            <include name="ErrorHandling" />
+        </run>
+    </groups>
+    <listeners>
+        <listener class-name="yashwanthgunapatiqa.testcomponents.Listeners" />
+    </listeners>
+
+    <test name="Errors Validation in Application">
+        <classes>
+            <class name="yashwanthgunapatiqa.tests.Errorvalidation" />
+        </classes>
+    </test>
+
+    <test name="Ordering the Products">
+        <classes>
+            <class name="yashwanthgunapatiqa.tests.SubmitOrder_E2E_TestCase" />
+        </classes>
+    </test>
+</suite>

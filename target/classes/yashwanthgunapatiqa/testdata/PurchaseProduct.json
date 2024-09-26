@@ -1,0 +1,27 @@
+[
+
+	{
+		"email" : "Yashr@gmail.com",
+		"password" : "Welcome@1",
+		"prodctName" : "IPHONE 13 PRO",
+		"country" : "india",
+		"expctMessage" : "THANKYOU FOR THE ORDER."
+	},
+
+	{
+		"email" : "nishu@gmail.com",
+		"password" : "Welcome@1",
+		"prodctName" : "ADIDAS ORIGINAL",
+		"country" : "india",
+		"expctMessage" : "THANKYOU FOR THE ORDER."
+	},
+
+	{
+		"email" : "avanthi@gmail.com",
+		"password" : "Welcome@1",
+		"prodctName" : "ZARA COAT 3",
+		"country" : "india",
+		"expctMessage" : "THANKYOU FOR THE ORDER."
+	}
+
+]

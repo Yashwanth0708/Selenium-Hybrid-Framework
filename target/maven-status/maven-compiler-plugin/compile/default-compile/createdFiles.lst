@@ -1,0 +1,12 @@
+yashwanthgunapatiqa\globalcomponents\Utils.class
+yashwanthgunapatiqa\globalcomponents\ExtentReportsUtils.class
+yashwanthgunapatiqa\globalcomponents\Wrapper.class
+yashwanthgunapatiqa\pages\CheckOutPage.class
+yashwanthgunapatiqa\globalcomponents\BrowserComponents.class
+yashwanthgunapatiqa\pages\ProductCatalogue.class
+yashwanthgunapatiqa\globalcomponents\JsonUtils.class
+yashwanthgunapatiqa\pages\OrdersPage.class
+yashwanthgunapatiqa\pages\ConfirmationPage.class
+yashwanthgunapatiqa\pages\LandingPage.class
+yashwanthgunapatiqa\globalcomponents\JsonUtils$1.class
+yashwanthgunapatiqa\pages\CartPage.class
